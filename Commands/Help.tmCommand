@@ -10,7 +10,7 @@
 
 html_header "RMate Bundle Help" "R"
 
-"$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_SUPPORT/README.markdown"
+"$TM_SUPPORT_PATH/lib/markdown_to_help.rb" "$TM_BUNDLE_SUPPORT/HELP.markdown"
 
 html_footer</string>
 	<key>input</key>

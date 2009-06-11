@@ -1,7 +1,7 @@
 Overview
 ========
 
-RMate is a [TextMate](http://macromates.com/) bundle for [R](http://www.r-project.org/about.html). It is based on the R/R Console/Rdaemon [bundles](http://svn.textmate.org/trunk/Bundles) and is focused on:
+RMate is a [TextMate](http://macromates.com/) bundle for [R](http://www.r-project.org/about.html). It is based on the [R/R Console/Rdaemon](http://svn.textmate.org/trunk/Bundles) bundles and is focused on:
 
 - easy to use, clear interface/menu
 - support for Windows ([E-Texteditor](http://www.e-texteditor.com/))
@@ -74,43 +74,48 @@ The R installation must include the *LATEX help files* (needed to build the (hel
 Install bundle
 --------------
 
-<pre>
+Possible locations for TextMate bundles:
+
+  - Inside the TextMate application (default bundles, will be overwritten with new installs)
+  - In /Library/Application Support/TextMate/Bundles (check out from repos here)
+  - In ~/Library/Application Support/TextMate/Pristine (download bundle and double click)
+  - In ~/Library/Application Support/TextMate/Bundles (custom bundles and local diff against default/repos/pristine
+  - (I have a softlink at ~/Library.. and the RMate git bundle is somewhere else).
+
 ### Mac
 
-  # installation directory (either \Library or ~\Library)
-INSTDIR="Library/Application\ Support/TextMate/Bundles"
+To manually install, get the bundle [here](http://cloud.github.com/downloads/swissr/rmate.tmbundle/rmate.tmbundle.zip), unzip and double click the rmate.tmbundle file (it will be in the Pristine folder then). Now reload the bundles.
 
-  # with git
+Or with code:
+<pre>
+### git (place into '/Library')
+INSTDIR="/Library/Application Support/TextMate/Bundles"
 cd "$INSTDIR"
-git clone git://github.com/swissr/rmate.tmbundle.git rmate.tmbundle
-osascript -e 'tell app "TextMate" to reload bundles'
-
-  # or download
-mkdir -p "$INSTDIR"
-cd "$INSTDIR"
-wget http://github.com/swissr/rmate.tmbundle/tarball/master
-tar zxf rmate.tmbundle*.tar.gz
-rm rmate.tmbundle*.tar.gz
-mv rmate.tmbundle* "rmate.tmbundle"
+sudo git clone git://github.com/swissr/rmate.tmbundle.git rmate.tmbundle
 osascript -e 'tell app "TextMate" to reload bundles'
 </pre>
 <pre>
+### just download (place into ~/Library)
+INSTDIR="$HOME/Library/Application Support/TextMate/Bundles/rmate.tmbundle"
+mkdir -p "$INSTDIR"
+cd "$INSTDIR"
+curl -o rmate.tmbundle.zip http://cloud.github.com/downloads/swissr/rmate.tmbundle/rmate.tmbundle.zip
+unzip rmate.tmbundle
+rmdir __MACOSX
+rm rmate.tmbundle.zip
+osascript -e 'tell app "TextMate" to reload bundles'
+</pre>
+
 ### Windows
 
-# paths as in Mac but put the file in '%APPData%\e\Bundles', e.g. 
-# 'C:\Dokumente und Einstellungen\Peter\Anwendungsdaten\e\Bundles\rmate.tmbundle'
-</pre>
+Put the file into '%APPData%\e\Bundles', e.g. 'C:\Dokumente und Einstellungen\chappi\Anwendungsdaten\e\Bundles\rmate.tmbundle'
+
 
 General notes
 -------------
 
 - Text/Source/Bundle bundles should be enabled.
 - The other R bundles (R, R Console and Rdaemon) **shouldn't be active** together with RMate. Use the filter in the bundle editor to disable/enable (reason: some shortcuts are equal and a 'chooser-popup' would be displayed, declaration tooltip after '(' won't work at all because of this).
-- RMate should be installed in \Library (or ~\Library), bundles can be on four locations:
-  - Inside the TextMate application (default bundles, will be overwritten with new installs)
-  - In /Library/Application Support/TextMate/Bundles (check out from repos here)
-  - In ~/Library/Application Support/TextMate/Pristine (downloaded and draged to TM)
-  - In ~/Library/Application Support/TextMate/Bundles (custom bundles and local diff against default/repos/pristine
 - I like the [ProjectPlus](http://ciaranwal.sh/2008/08/05/textmate-plug-in-projectplus) plugin. Note: it is only loaded in new projects, if TM is already running.
 
 Windows (E-Texteditor)
