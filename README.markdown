@@ -19,7 +19,7 @@ or by hand:<pre>
   - the [master](http://github.com/swissr/rmate.tmbundle/zipball/master) (i.e. most recent) version or
   - choose the (latest) tagged version [here](http://github.com/swissr/rmate.tmbundle/downloads)
 - unzip and rename to 'rmate.tmbundle' (i.e. remove swissr- and -hash)
-- double click to import into TextMate and choose 'Reload the bundles'.
+- double click to import into TextMate'
 </pre>
 
 ----
