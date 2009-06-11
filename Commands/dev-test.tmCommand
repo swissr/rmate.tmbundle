@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#revs=$(sleep 0.2 \
+#    2&gt; &gt;(CocoaDialog progressbar --indeterminate \
+#        --title "View Revision…" \
+#        --text "(fake) Retrieving List of Revisions…" \
+#    ))
+#echo "$revs"
+
+
+"\"$TM_BUNDLE_SUPPORT\"/bin/insert_function_param.sh";
+echo TM_CURRENT_LINE "$TM_CURRENT_LINE"
+echo TM_CURRENT_WORD "$TM_CURRENT_WORD"
+echo TM_DIRECTORY "$TM_DIRECTORY"
+echo TM_FILEPATH "$TM_FILEPATH"
+echo TM_LINE_INDEX "$TM_LINE_INDEX"
+echo TM_LINE_NUMBER "$TM_LINE_NUMBER"
+echo TM_PROJECT_DIRECTORY "$TM_PROJECT_DIRECTORY"
+echo TM_SCOPE "$TM_SCOPE"
+echo TM_SELECTED_FILES "$TM_SELECTED_FILES"
+echo TM_SELECTED_FILE "$TM_SELECTED_FILE"
+echo TM_SELECTED_TEXT "$TM_SELECTED_TEXT"
+echo TM_SOFT_TABS "$TM_SOFT_TABS"
+echo TM_SUPPORT_PATH "$TM_SUPPORT_PATH"
+echo TM_BUNDLE_SUPPORT "$TM_BUNDLE_SUPPORT"
+echo TM_TAB_SIZE "$TM_TAB_SIZE"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>@^</string>
+	<key>name</key>
+	<string>dev-test</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>scope</key>
+	<string>source.r</string>
+	<key>uuid</key>
+	<string>B4CB9C32-CF12-4C08-AAFB-9438988B391B</string>
+</dict>
+</plist>

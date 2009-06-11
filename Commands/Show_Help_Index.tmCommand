@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>RHOME=${R_HOME:=/Library/Frameworks/R.framework/Versions/Current/Resources}
+
+open "${RHOME// /%20}"/doc/html/index.html</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^H</string>
+	<key>name</key>
+	<string>Local R doc startpage</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>source.r, source.rd</string>
+	<key>uuid</key>
+	<string>E89B2D64-CB88-478D-828D-2FA5C7B1C45C</string>
+</dict>
+</plist>

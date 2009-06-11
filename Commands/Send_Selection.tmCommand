@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>beforeRunningCommand</key>
+        <string>nop</string>
+        <key>command</key>
+        <string>SELTXT="$TM_SELECTED_TEXT"
+[[ -z $SELTXT ]] &amp;&amp; echo "nothing is selected" &amp;&amp; exit_show_tool_tip
+
+if [[ -z $(uname | grep CYGWIN) ]]; then
+  osascript -e 'on run(args)' \
+	-e 'tell application "R" to activate' \
+	-e 'tell application "R" to cmd (item 1 of args)' \
+	-e 'tell application "TextMate" to activate' \
+	-e 'end run' -- "$SELTXT"
+else 
+  SELTXT=ORFW#$SELTXT#ORFW
+  res=$("$TM_BUNDLE_SUPPORT"/osareplace/osrefowi "$SELTXT" )
+fi
+</string>
+        <key>input</key>
+        <string>none</string>
+        <key>keyEquivalent</key>
+        <string>^M</string>
+        <key>name</key>
+        <string>Send Selection</string>
+        <key>output</key>
+        <string>discard</string>
+        <key>scope</key>
+        <string>source.r, source.rd</string>
+        <key>uuid</key>
+        <string>AB13616C-292B-46EF-B59A-B60F0573D0AF</string>
+    </dict>
+</plist>

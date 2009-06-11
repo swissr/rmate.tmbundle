@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\keyword{${1:according to 'file.show(file.path(R.home("doc"), "KEYWORDS"))'}}</string>
+	<key>name</key>
+	<string>keyword</string>
+	<key>scope</key>
+	<string>source.rd</string>
+	<key>tabTrigger</key>
+	<string>rd.k</string>
+	<key>uuid</key>
+	<string>D104D8B9-1B94-4A64-B4AE-3D81F673DDE8</string>
+</dict>
+</plist>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\concept{${1:myconcept}}</string>
+	<key>name</key>
+	<string>concept (con)</string>
+	<key>scope</key>
+	<string>source.rd</string>
+	<key>tabTrigger</key>
+	<string>rd.con</string>
+	<key>uuid</key>
+	<string>38F6B52B-BCC6-4903-BB52-4A0E36844160</string>
+</dict>
+</plist>

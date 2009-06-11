@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>open http://dir.gmane.org/index.php?prefix=gmane.comp.lang.r</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^H</string>
+	<key>name</key>
+	<string>All R mailing lists (gmane)</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>source.r, source.rd</string>
+	<key>uuid</key>
+	<string>FDEC86B8-B1E3-4C61-B0E9-A6A019084126</string>
+</dict>
+</plist>

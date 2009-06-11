@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>
+export WORD=$(ruby -- &lt;&lt;-SCR1 
+	require File.join(ENV["TM_SUPPORT_PATH"], "lib/current_word.rb")
+	word = Word.current_word('\w\.')
+	print word
+SCR1
+)
+
+#check whether WORD is defined otherwise quit
+[[ -z "$WORD" ]] &amp;&amp; echo "No keyword found" &amp;&amp; exit_show_tool_tip
+
+WORDORG="$WORD"
+
+
+[[ ! -f "$TM_BUNDLE_SUPPORT"/generated/help.index ]] &amp;&amp; exit_show_tool_tip "help index missing, click 'Build Help Index' to generate it"
+
+[[ $RD -eq 0 ]] &amp;&amp; LOCAL=$(cat | grep '&lt;\- *function' | perl -pe 's/\t//g;s/ *(.*?) *&lt;\-.*/$1\t{local}/' | sort | egrep -i "^${WORD//./\\.}")
+
+#get suggestions
+RES=$(egrep -i "^${WORD//./\\.}" "$TM_BUNDLE_SUPPORT"/generated/help.index | perl -pe 's!(.*?)\t.*?library/(.*?)/.*!$1\t{$2}!')
+export RES=$(echo -e "$LOCAL"; echo -en "$RES")
+
+
+#echo -en "$RES" &amp;&amp; exit 206
+ruby -- &lt;&lt;-SCRIPT 2&gt; /dev/null
+require File.join(ENV["TM_SUPPORT_PATH"], "lib/exit_codes.rb")
+require "#{ENV["TM_SUPPORT_PATH"]}/lib/ui"
+word = "$WORD"
+wordorg = "$WORDORG"
+text = ENV['RES']
+funs = text.split("\n")
+rdfuns = funs.select {|x| x =~ /\|OK$/ }
+rdfuns.collect! {|x| x.gsub(/\|OK$/, "") }
+funs.delete_if {|x| x.match('\|OK$') }
+f1 = funs.collect{|item| item.gsub(/\t.*/, "")}
+rdfuns.sort! {|x,y| y &lt;=&gt; x }
+rdfuns.each_index do |i|
+	if  ! f1.include?(rdfuns[i]) &amp;&amp; rdfuns[i].length &gt; 0
+		funs.unshift(rdfuns[i] + "\t…local…" )
+	end
+end
+
+funs.delete_if {|x| x.match('[,\- ]') }
+funs.delete_if {|x| x.match('matrices.*rgl') }
+#funs.delete_if {|x| x.match("#{word}\t") }
+funs.collect! {|x| (rdfuns.include?(x.gsub(/\t.*/,""))) ? x.gsub(/\}/, "…").gsub(/\{/, "…") : x }
+
+functions = funs.select{|item| item =~ /^#{word}/}
+func = funs.select{|item| item !~ /^#{word}/}
+fp = func.join("\n")
+if (functions.size &lt; 1 &amp;&amp; (ENV['TM_SELECTED_TEXT'].nil? || ENV['TM_SELECTED_TEXT'].empty?)) then
+	if fp.size &gt; 0
+		TextMate.exit_show_tool_tip("Only found :\n#{fp}")
+	else
+		TextMate.exit_show_tool_tip("Nothing found")
+	end
+end
+if (! ENV['TM_SELECTED_TEXT'].nil? &amp;&amp; ! ENV['TM_SELECTED_TEXT'].empty?) then
+	functions.replace(funs)
+end
+if (functions.size == 1 &amp;&amp; ENV['R_AUTOCOMPLETE'].to_i == 1 &amp;&amp; (ENV['RD'].to_i == 0 || ! functions.first.match('\{')))
+  function = functions.first
+else
+	idx = TextMate::UI.menu(functions)
+	TextMate.exit_discard if idx.nil?
+	function = functions[idx]
+end
+#TextMate.exit_discard if function.empty?
+if ENV['TM_SELECTED_TEXT'].nil? or ENV['TM_SELECTED_TEXT'].empty?
+  print function.gsub!(/\t.*/,"")[wordorg.length..-1]
+else
+  print function.gsub!(/\t.*/,"")
+end
+SCRIPT
+</string>
+	<key>fallbackInput</key>
+	<string>none</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^ </string>
+	<key>name</key>
+	<string>Completion</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>source.r</string>
+	<key>uuid</key>
+	<string>7512428B-5857-45A7-9DF8-CD4B72DA18AE</string>
+</dict>
+</plist>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>beforeRunningCommand</key>
+        <string>nop</string>
+        <key>command</key>
+        <string>SOURCEIT="$TM_BUNDLE_SUPPORT"/temp/source.it 
+
+SELTXT="$TM_SELECTED_TEXT"
+[[ -z $SELTXT ]] &amp;&amp; echo "nothing is selected" &amp;&amp; exit_show_tool_tip
+ 
+
+ 
+[[ -e "$SOURCEIT" ]] || mkdir "$TM_BUNDLE_SUPPORT"/temp
+echo "$SELTXT" &gt; "$SOURCEIT"
+ 
+INPUT="source( \"$SOURCEIT\" )"
+ 
+if [[ -z $(uname | grep CYGWIN) ]]; then
+  osascript -e 'on run(args)' \
+	-e 'tell application "R" to activate' \
+	-e 'tell application "R" to cmd (item 1 of args)' \
+	-e 'tell application "TextMate" to activate' \
+	-e 'end run' -- "$INPUT"
+else 
+  INPUT=$(echo "$INPUT" | sed 's/\(\/cygdrive\/\)\(.\)\(\/*\)/\2:\3/')
+  INPUT=ORFW#$INPUT#ORFW
+  res=$("$TM_BUNDLE_SUPPORT"/osareplace/osrefowi "$INPUT" )
+  echo "$res"
+fi
+ </string>
+        <key>input</key>
+        <string>none</string>
+        <key>name</key>
+        <string>Source Selection</string>
+        <key>keyEquivalent</key>
+        <string>^@M</string>
+        <key>output</key>
+        <string>discard</string>
+        <key>scope</key>
+        <string>source.r</string>
+        <key>uuid</key>
+        <string>1F3342C2-B997-4511-992D-58134FE25A33</string>
+    </dict>
+</plist>

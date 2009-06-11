@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\enc{${1:encoded-jörg}}{${2:ansi-joerg}}</string>
+	<key>name</key>
+	<string>enc</string>
+	<key>scope</key>
+	<string>source.rd</string>
+	<key>tabTrigger</key>
+	<string>rd.e</string>
+	<key>uuid</key>
+	<string>50C724C5-2BA8-4BE0-A9DF-3F40CBCAB137</string>
+</dict>
+</plist>

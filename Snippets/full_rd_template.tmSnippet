@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\name{${8:hello}} 
+\alias{$8} 
+\alias{${9:hi}}
+\alias{${10:goodxy}}
+\title{${11:Greetings title}}
+\description{ 
+  ${12:(SNIPPET_ENDS_HERE) Description...}.
+} 
+\usage{ 
+$8( name = "world" )
+$9( name = "", exclam = FALSE )
+$10( name, dayTime = "morning" )
+} 
+\arguments{ 
+  \item{name}{a character string giving the name of the person to greet.} 
+  \item{exclam}{if TRUE, an exclamation sign will be added.} 
+  \item{dayTime}{time of day to greet, e.g. 'morning', 'evening'.} 
+} 
+
+${1:\details{
+  SNIPPET-NOTE: you may accept or delete (1 keystroke) 
+  this and the following sections. ONLY start writing
+  when you arrive at the first line (\name) again !!!
+\}}
+${2:\value{ 
+  A character vector.
+\}}
+${3:\section{Side Effects\}{
+  A plot will be drawn on the current device.
+  (example of a custom section, here called 'Side Effects', which is rarely 
+  used/necessary)
+\}}
+${4:\seealso{ 
+  \code{\link{save\}\}. 
+\}}
+${5:\references{
+  Madonna, E. S. (1984).
+  The use of greeting in society.
+  \emph{Socia\}, \bold{42\}, 404--413.
+  (example of reference to the literature. Use \url{\} for web pointers.)
+\}}
+${6:\author{
+  L. Star &lt;littlestar@example.com&gt;
+  Maintainer: B. Star &lt;bs@example.com&gt;
+\}}
+\examples{ 
+  # hi peter
+hi( "peter" ) 
+  # good morning america
+goodxy( "america", "morning" ) 
+  # we don't know where to search for
+  \dontrun{
+    vips &lt;- getvips( some.loc )
+    hello( vips ) 
+  }
+}
+\keyword{according to 'file.show(file.path(R.home("doc"), "KEYWORDS"))'}
+${7:\concept{possibly a concept index entry, here e.g. Template (?) \}s}
+</string>
+	<key>name</key>
+	<string>full template (doc)</string>
+	<key>scope</key>
+	<string>source.rd</string>
+	<key>tabTrigger</key>
+	<string>rd.doc</string>
+	<key>uuid</key>
+	<string>07B651CD-2B32-4AB7-ADF2-4EA9C6624DAF</string>
+</dict>
+</plist>

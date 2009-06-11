@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>repeat {
+	${1:statement}
+	$0
+	  # ${2:comment break-condition}
+	if (${3:break-condition}) break
+}</string>
+	<key>name</key>
+	<string>repeat</string>
+	<key>scope</key>
+	<string>source.r</string>
+	<key>tabTrigger</key>
+	<string>repeat</string>
+	<key>uuid</key>
+	<string>C7F83ABA-F539-4507-A2EF-E94C9597F46D</string>
+</dict>
+</plist>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>
+mkdir -p "$TM_BUNDLE_SUPPORT"/generated
+rm -f "$TM_BUNDLE_SUPPORT"/generated/help.index
+rm -f "$TM_BUNDLE_SUPPORT"/generated/help.pkgs
+rm -f "$TM_BUNDLE_SUPPORT"/generated/libpaths
+
+#    2&gt; &gt;(CocoaDialog progressbar --indeterminate \
+buildIdx=$(. "$TM_BUNDLE_SUPPORT"/bin/rebuild_help_index.sh \
+    &gt;(CocoaDialog progressbar --indeterminate \
+        --title "Build Help Index" \
+        --text "This takes some time…" \
+    ))
+
+echo "$buildIdx"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@B</string>
+	<key>name</key>
+	<string>Build Index</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>scope</key>
+	<string>source.r, source.rd</string>
+	<key>uuid</key>
+	<string>E66E9DEA-1B96-4F4B-8EF1-22D74F91BED7</string>
+</dict>
+</plist>

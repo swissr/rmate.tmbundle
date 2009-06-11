@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>beforeRunningCommand</key>
+        <string>nop</string>
+        <key>command</key>
+        <string>RHOME=${R_HOME:=/Library/Frameworks/R.framework/Versions/Current/Resources}
+
+DOCPATH="${RHOME// /%20}"/doc/manual
+DOCNAME="R-ints"
+
+if [[ -f "$DOCPATH"/$DOCNAME.pdf ]]; then
+  open "$DOCPATH"/$DOCNAME.pdf
+else
+  open "$DOCPATH"/$DOCNAME.html
+fi</string>
+        <key>input</key>
+        <string>selection</string>
+        <key>keyEquivalent</key>
+        <string>^@H</string>
+        <key>name</key>
+        <string>R Internals</string>
+        <key>output</key>
+        <string>discard</string>
+        <key>scope</key>
+        <string>source.r, source.rd</string>
+        <key>uuid</key>
+        <string>BFBAAA98-C1AD-44CA-9E5C-D98FA6687BEF</string>
+    </dict>
+</plist>

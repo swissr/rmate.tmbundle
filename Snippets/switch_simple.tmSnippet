@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>switch( ${1:eval-expr}, ${2:a} = ${3:expr}, ${4:b} = ${0:expr}, ${5:"Otherwise: last"} )</string>
+	<key>name</key>
+	<string>switch (simple)</string>
+	<key>scope</key>
+	<string>source.r</string>
+	<key>tabTrigger</key>
+	<string>switchs</string>
+	<key>uuid</key>
+	<string>F65D7522-9127-4CD4-AF79-6F24A11BAE7F</string>
+</dict>
+</plist>

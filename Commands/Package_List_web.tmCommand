@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>beforeRunningCommand</key>
+        <string>nop</string>
+        <key>command</key>
+        <string>open http://cran.r-project.org/web/packages/</string>
+        <key>input</key>
+        <string>selection</string>
+        <key>keyEquivalent</key>
+        <string>^H</string>
+        <key>name</key>
+        <string>Package List (CRAN)</string>
+        <key>output</key>
+        <string>discard</string>
+        <key>scope</key>
+        <string>source.r, source.rd</string>
+        <key>uuid</key>
+        <string>19031922-61B0-45BE-B75C-2F2B33450589</string>
+    </dict>
+</plist>

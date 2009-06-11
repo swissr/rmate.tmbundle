@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\usage{ 
+${1:fktname}( ${2:name = "world"} )
+}
+</string>
+	<key>name</key>
+	<string>usage (us)</string>
+	<key>scope</key>
+	<string>source.rd</string>
+	<key>tabTrigger</key>
+	<string>rd.us</string>
+	<key>uuid</key>
+	<string>3545602C-7DC4-4E4A-BEA8-72B27E74205E</string>
+</dict>
+</plist>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>command</key>
+	<string>#show help entry for word - simplified
+
+if [ -z "$TM_SELECTED_TEXT" ]; then
+	export WORD=$(ruby -- &lt;&lt;-SCR1 
+		require File.join(ENV["TM_SUPPORT_PATH"], "lib/current_word.rb")
+		word = Word.current_word('\w\.')
+		word.gsub!(/^[\d\.\-]+$/,"")
+		print word
+	SCR1
+	)
+
+if [ -z "$WORD" ]; then
+	#look for nested commands
+	export WORD=$(perl -e '
+	$line=$ENV{"TM_CURRENT_LINE"};$col=$ENV{"TM_LINE_INDEX"};
+	$line=substr($line,0,$col);
+	$line=~s/ //g;
+	@arr=split(//,$line);$c=0;
+	for($i=$#arr;$i&gt;-1;$i--){$c-- if($arr[$i] eq ")");$c++ if($arr[$i] eq "(");last if $c&gt;0;}
+	if($i==-1) {
+		print "";
+	} else {
+		substr($line,0,$i)=~m/([\w\.]+)$/;
+		print $1 if defined($1);
+	}
+	')
+fi else
+	#take the selected text
+	export WORD=$(echo -en "$TM_SELECTED_TEXT" | perl -e '$_=&lt;&gt;;chomp;s/^[\t ]*//;s/([\w\.]+)[ \(\{].*/$1/g;print')
+fi
+
+# if [ -z "$WORD" ]; then
+#   WORD=$("$DIALOG" -m -p 'prompt="Search for:";title="Look up in R Documentation";' RequestString | perl -e 'undef($/);$a=&lt;&gt;;$a=~s/\n|\t//mg;$a=~m/.*?&lt;key&gt;returnArgument&lt;\/key&gt;&lt;string&gt;(.*?)&lt;\/string&gt;.*/; print $1 if (length($1))')
+#   [[ -z "$WORD" ]] &amp;&amp; exit_discard
+# fi
+
+#check whether WORD is defined otherwise quit
+# [[ -z "$WORD" ]] &amp;&amp; echo "No keyword found." &amp;&amp; exit_show_tool_tip
+[[ -z "$WORD" ]] &amp;&amp; WORD="(word + enter)"
+
+[[ ! -f "$TM_BUNDLE_SUPPORT"/generated/help.index ]] &amp;&amp; exit_show_tool_tip "help index missing, click 'Build Help Index' to generate it"
+
+#get the reference for WORD
+FILE=$(grep "^${WORD//./\\.}	" "$TM_BUNDLE_SUPPORT"/generated/help.index | awk '{print $2;}' | perl -pe 's!/latex/!/html/!;s!tex$!html!')
+
+CNT=$(echo -e "$FILE" | wc -l)
+
+if [ ! -z $FILE ]; then
+  if [ $CNT == 1 ]; then
+    open $(echo $FILE | sed 's/.tex/.html/')
+    exit_discard
+  fi
+fi
+
+RHOME=${R_HOME:=/Library/Frameworks/R.framework/Versions/Current/Resources}
+open "${RHOME// /%20}"/doc/html/index.html</string>
+	<key>fallbackInput</key>
+	<string>word</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^H</string>
+	<key>name</key>
+	<string>Help for word in browser</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>source.r, source.rd</string>
+	<key>uuid</key>
+	<string>317D31C2-83F7-46D0-9D89-BA41D3139D71</string>
+</dict>
+</plist>

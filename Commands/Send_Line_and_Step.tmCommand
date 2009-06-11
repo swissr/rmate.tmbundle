@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>INPUT=${TM_CURRENT_LINE}
+
+if [[ -z $(uname | grep CYGWIN) ]]; then
+  osascript -e 'on run(args)' \
+	-e 'tell application "R" to activate' \
+	-e 'tell application "R" to cmd (item 1 of args)' \
+	-e 'end run' -- "$INPUT"
+else 
+  INPUT=ORFW#$INPUT#ORFW
+  res=$("$TM_BUNDLE_SUPPORT"/osareplace/osrefowi "$INPUT" )
+fi
+
+open "txmt://open?line=$(($TM_LINE_NUMBER + 1))&amp;column=$(($TM_LINE_INDEX + 1))" &amp;
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^$</string>
+	<key>name</key>
+	<string>Send Line and Step</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>scope</key>
+	<string>source.r, source.rd</string>
+	<key>uuid</key>
+	<string>43257C49-0F47-4859-A96B-B816488F25F8</string>
+</dict>
+</plist>

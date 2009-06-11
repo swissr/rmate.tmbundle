@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\dontrun{
+  ${1:code here}
+}
+</string>
+	<key>name</key>
+	<string>dontrun (dr)</string>
+	<key>scope</key>
+	<string>source.rd</string>
+	<key>tabTrigger</key>
+	<string>rd.dr</string>
+	<key>uuid</key>
+	<string>3D58CCA0-85F8-464B-A7C5-AA390C22E867</string>
+</dict>
+</plist>

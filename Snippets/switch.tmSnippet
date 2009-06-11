@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>switch( ${1:eval-expr},
+	${2:a} = ${3:expr},
+	${4:b} = ${5:expr},
+	$0,
+	stop( "'$1' not matched" )
+)</string>
+	<key>name</key>
+	<string>switch</string>
+	<key>scope</key>
+	<string>source.r</string>
+	<key>tabTrigger</key>
+	<string>switch</string>
+	<key>uuid</key>
+	<string>8AEEA5C3-AFB6-4B57-9391-750CDCD8385D</string>
+</dict>
+</plist>

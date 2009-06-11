@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>\author{
+  ${1:name}${2: \email{${3:name}@${4:example.com}\}}
+}
+</string>
+	<key>name</key>
+	<string>author (aut)</string>
+	<key>scope</key>
+	<string>source.rd</string>
+	<key>tabTrigger</key>
+	<string>rd.aut</string>
+	<key>uuid</key>
+	<string>83C73C81-9AC8-4F21-BB2F-309F98C421BC</string>
+</dict>
+</plist>

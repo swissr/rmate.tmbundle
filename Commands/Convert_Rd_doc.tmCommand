@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>CONVIT="$TM_BUNDLE_SUPPORT"/temp/convert.it
+
+cat &gt; "$CONVIT"
+R CMD Rdconv -t html "$CONVIT"</string>
+	<key>input</key>
+	<string>document</string>
+	<key>keyEquivalent</key>
+	<string>^P</string>
+	<key>name</key>
+	<string>Preview Rd doc</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.rd</string>
+	<key>uuid</key>
+	<string>9BCB0D9C-4BAD-4529-AC03-351C439F485C</string>
+</dict>
+</plist>
