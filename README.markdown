@@ -7,10 +7,19 @@ RMate is a [TextMate](http://macromates.com/) bundle for [R](http://www.r-projec
 
 ----
 
-Under 'Downloads' you may get the last stable bundle as zip file (in case you do not know/use git).
+Install via git:<pre>
+INSTDIR=~/"Library/Application Support/TextMate/Bundles"
+cd "$INSTDIR"
+git clone git://github.com/swissr/rmate.tmbundle.git rmate.tmbundle
+osascript -e 'tell app "TextMate" to reload bundles'
+</pre>
 
-----
-
-The 'Support/README.markdown' file contains more infos and detailed download instructions.
+or by hand:<pre>
+- download
+  - the [master](http://github.com/swissr/rmate.tmbundle/zipball/master) (i.e. most recent) version or
+  - choose the (latest) tagged version [here](http://github.com/swissr/rmate.tmbundle/downloads)
+- unzip and rename to 'rmate.tmbundle' (i.e. remove swissr- and -hash)
+- double click to import into TextMate and choose 'Reload the bundles'.
+</pre>
 
 ----

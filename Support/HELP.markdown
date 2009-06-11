@@ -74,41 +74,29 @@ The R installation must include the *LATEX help files* (needed to build the (hel
 Install bundle
 --------------
 
+Either via git:<pre>
+INSTDIR=~/"Library/Application Support/TextMate/Bundles"
+cd "$INSTDIR"
+git clone git://github.com/swissr/rmate.tmbundle.git rmate.tmbundle
+osascript -e 'tell app "TextMate" to reload bundles'
+</pre>
+
+or by hand:<pre>
+- download
+  - the [master](http://github.com/swissr/rmate.tmbundle/zipball/master) (i.e. most recent) version or
+  - choose the (latest) tagged version [here](http://github.com/swissr/rmate.tmbundle/downloads)
+- unzip and rename to 'rmate.tmbundle' (i.e. remove swissr- and -hash)
+- double click to import into TextMate and choose 'Reload the bundles'.
+</pre>
+
 Possible locations for TextMate bundles:
 
   - Inside the TextMate application (default bundles, will be overwritten with new installs)
   - In /Library/Application Support/TextMate/Bundles (check out from repos here)
   - In ~/Library/Application Support/TextMate/Pristine (download bundle and double click)
   - In ~/Library/Application Support/TextMate/Bundles (custom bundles and local diff against default/repos/pristine
+  - (Windos: put the file into '%APPData%\e\Bundles'
   - (I have a softlink at ~/Library.. and the RMate git bundle is somewhere else).
-
-### Mac
-
-To manually install, get the bundle [here](http://cloud.github.com/downloads/swissr/rmate.tmbundle/rmate.tmbundle.zip), unzip and double click the rmate.tmbundle file (it will be in the Pristine folder then). Now reload the bundles.
-
-Or with code:
-<pre>
-### git (place into '/Library')
-INSTDIR="/Library/Application Support/TextMate/Bundles"
-cd "$INSTDIR"
-sudo git clone git://github.com/swissr/rmate.tmbundle.git rmate.tmbundle
-osascript -e 'tell app "TextMate" to reload bundles'
-</pre>
-<pre>
-### just download (place into ~/Library)
-INSTDIR="$HOME/Library/Application Support/TextMate/Bundles/rmate.tmbundle"
-mkdir -p "$INSTDIR"
-cd "$INSTDIR"
-curl -o rmate.tmbundle.zip http://cloud.github.com/downloads/swissr/rmate.tmbundle/rmate.tmbundle.zip
-unzip rmate.tmbundle
-rmdir __MACOSX
-rm rmate.tmbundle.zip
-osascript -e 'tell app "TextMate" to reload bundles'
-</pre>
-
-### Windows
-
-Put the file into '%APPData%\e\Bundles', e.g. 'C:\Dokumente und Einstellungen\chappi\Anwendungsdaten\e\Bundles\rmate.tmbundle'
 
 
 General notes
