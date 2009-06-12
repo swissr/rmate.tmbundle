@@ -41,7 +41,11 @@ If R\_HOME is not defined '/Library/Frameworks/R.framework/Versions/Current/Reso
 
 ### Various Commands
 
-<button>^⇧B / Alt+Shift+B</button> **Back to forward slashes**, helps with paths copied from the explorer. <button>^⇧F / Alt+Shift+F</button> **Find function** in current file or in all project files, based on selection or word the caret is located in. <button>^⇧N / Alt+Shift+N</button> **Negate** toggles between TRUE/FALSE, <button>^⇧P / no</button> **Preview Rd doc**, TODO: not supported on Windows, <button>^⇧R / Alt+Shift+R</button> **Wrap in region**, the selected text will be wrapped in '#{{' and '#}}' which are foldable. <button>^⇧⌘B / Ctrl+Alt+Shift+B</button> **Build Index** creates the files $TM_BUNDLE_SUPPORT/generated/(help.index & help.pkgs) with content based on all *installed* packages. The completion functions rely on this index. It must be re-build after package changes. On Windows there is an UTF-8 warning message but it still works. <button>^? / Alt+Shift+?</button> **Help** which displays this file. On Windows a strange (Alt+Shift+Ü) shortcut is beeing displayed in the menu (TODO: why?).
+<button>^⇧B / Alt+Shift+B</button> **Back to forward slashes**, helps with paths copied from the explorer. <button>^⇧F / Alt+Shift+F</button> **Find function** in current file or in all project files, based on selection or word the caret is located in. <button>^⇧N / Alt+Shift+N</button> **Negate** toggles between TRUE/FALSE, <button>^⇧P / no</button> **Preview Rd doc**, TODO: not supported on Windows, <button>^⇧R / Alt+Shift+R</button> **Wrap in region**, the selected text will be wrapped in '#{{' and '#}}' which are foldable. <button>^? / Alt+Shift+?</button> **Help** which displays this file. On Windows a strange (Alt+Shift+Ü) shortcut is beeing displayed in the menu (TODO: why?).
+
+<button>^⇧⌘B / Ctrl+Alt+Shift+B</button> **Build Index** creates the files $TM_BUNDLE_SUPPORT/generated/(help.index/help.pkgs/libpaths). The completion (argument/declaration) functions rely on this index and **it must be rebuilt after package changes**. We removed the progress bar (didn't work well on Windows) but there is a tooltip showing up when the process has finished (on Windows there is an UTF-8 warning message but it still works).
+
+If the the build has succeeded, 'libpaths' contains the .libPaths(), 'help.pkgs' the package names and 'help.index' the names with the _full_ path to the R latex help file.
 
 Snippets
 ---------
@@ -74,20 +78,28 @@ The R installation must include the *LATEX help files* (needed to build the (hel
 Install bundle
 --------------
 
-Either via git:<pre>
-INSTDIR=~/"Library/Application Support/TextMate/Bundles"
-cd "$INSTDIR"
-git clone git://github.com/swissr/rmate.tmbundle.git rmate.tmbundle
-osascript -e 'tell app "TextMate" to reload bundles'
-</pre>
+Install via git:
 
-or by hand:<pre>
-- download
-  - the [master](http://github.com/swissr/rmate.tmbundle/zipball/master) (i.e. most recent) version or
-  - choose the (latest) tagged version [here](http://github.com/swissr/rmate.tmbundle/downloads)
-- unzip and rename to 'rmate.tmbundle' (i.e. remove swissr- and -hash)
-- double click to import into TextMate'
-</pre>
+	### Mac
+	cd ~/Library/Application Support/TextMate/Bundles
+	git clone git://github.com/swissr/rmate.tmbundle.git rmate.tmbundle
+	osascript -e 'tell app "TextMate" to reload bundles'
+	
+	### PC/Cygwin
+	cd "$APPDATA/e/Bundles"
+	git clone git://github.com/swissr/rmate.tmbundle.git rmate.tmbundle
+	#menu: 'Bundles->Edit Bundles->Reload Bundles'
+	#note: R_HOME must be defined (check E-Texteditor chapter)
+
+or manually:
+
+	- download
+	  - the [master](http://github.com/swissr/rmate.tmbundle/zipball/master) (i.e. most recent) version or
+	  - choose the (latest) tagged version [here](http://github.com/swissr/rmate.tmbundle/downloads)
+	- unzip and rename to 'rmate.tmbundle' (i.e. remove swissr- and -hash)
+	- install
+	  - (mac)  double click to import into TextMate
+	  - (pc)   move to %APPDATA%/e/Bundles, reload bundles
 
 Possible locations for TextMate bundles:
 
@@ -96,7 +108,8 @@ Possible locations for TextMate bundles:
   - In ~/Library/Application Support/TextMate/Pristine (download bundle and double click)
   - In ~/Library/Application Support/TextMate/Bundles (custom bundles and local diff against default/repos/pristine
   - (Windos: put the file into '%APPData%\e\Bundles'
-  - (I have a softlink at ~/Library.. and the RMate git bundle is somewhere else).
+  
+I have a softlink at ~/Library.. and the RMate git bundle is somewhere else. If RMate would be installed into '/Library..' instead of the user library there would probably be permission problems because we create temporary files (in Support/generated).
 
 
 General notes
